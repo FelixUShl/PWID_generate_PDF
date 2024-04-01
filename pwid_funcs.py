@@ -11,8 +11,9 @@ def fac_code(qr_name: str) -> str:
     code = str(int(hex8b(qr_name)[-4:], 16))
     return f"{fc},{code}"
 
-def generate_qr_list(qrs: list) -> list:
+
+def generate_qr_list(qrs: list, path: str) -> list:
     data = list()
     for qr in qrs:
-        data.append([f"qr/{qr}", f"HEX 8b: {hex8b(qr)}", f"DEC 3b: {dec3b(qr)}", f"FC: {fac_code(qr)}"])
-        return data
+        data.append([f"{path}/{qr}", f"HEX 8b: {hex8b(qr)}", f"DEC 3b: {dec3b(qr)}", f"FC: {fac_code(qr)}"])
+    return data
